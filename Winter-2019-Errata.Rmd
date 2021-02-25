@@ -24,6 +24,8 @@ h1 {
 }
 ```
 
+This document contains errata (and non-error important notes) for the textbook _Statistics for Linguists: An Introduction Using R_ (Bodo Winter, 2019, Routledge). Please feel free to suggest other errata by creating a [GitHub issue](https://github.com/djvill/Winter-2019-Errata/issues).
+
 
 # Chapter 3: Descriptive statistics
 
@@ -39,6 +41,7 @@ h1 {
 
 |    Page    |    Text                                                                   |    Comment                                                                                                                                                                                                         |
 |---------------:|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    74      |    E4.7: $y = b_{0} + b_{1} * x + e$    |   The error term is sometimes notated as epsilon ($\epsilon$), but notated as $e$, it shouldn't be confused with the natural logarithm base (also notated $e$), which is discussed in section 5.4.                                                                      |
 |    75      |    Figure 4.6 shows the _SSE_ as a function of different slope values.    |    Should be Figure 4.5b, not Figure 4.6                                                                                                                                                                                     |
 |    77      |    Conversely, 32% of the variation in response durations is due to chance    |    Should be 28% (100%$\minus$74%), not 32%.              |
 |    78      |    `plot(x., y, pch = 19)`                                               |    Extra dot. Should be<br>`plot(x, y, pch = 19)`                                                                                                                                                                 |
@@ -79,6 +82,7 @@ theme_minimal()
 
 |    Page    |    Text                                                                                         |    Comment                                                                                                                  |
 |---------------:|-----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+|    103     |    E6.1: $y = b_{0} + b_{1} * x + b_{2} * x + e$                                                           |    This equation suggests that $b_{1}$ and $b_{2}$ are multiplied by the same predictor $x$. In the case of multiple regression, each predictor has its own coefficient (as in E6.3, bottom of page), so a more accurate form would be $y = b_{0} + b_{1} * x_{1} + b_{2} * x_{2} + e$   |
 |    106     |    (Code output for `tidy(icon_mdl)`)                                                           |    Your output will probably have a lot fewer decimal places.                                                               |
 |    107     |    (Footnote 3) A log frequency of 0 corresponds to a raw word frequency of 1, since 100=1    |    Missing superscript. Should be<br>A log frequency of 0 corresponds to a raw word frequency of 1, since 10^0^=1    |
 |    111     |    `for (i in 1:9) plot(rnorm(50), rnorm(50))`                                                  |    If your Plots pane in RStudio is too small, running this code will yield `"Error in plot.new() : figure margins too large".` If so, just make Plots pane wider/taller.                                             |

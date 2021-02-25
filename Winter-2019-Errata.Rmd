@@ -1,7 +1,7 @@
 ---
 title: "Errata for _Statistics for Linguists: An Introduction Using R_, Bodo Winter, 2019, Routledge"
 author: "| Dan Villarreal \n| University of Pittsburgh\n"
-date: "Updated 2/23/2021"
+date: "Updated 2/25/2021"
 output: 
   html_document:
     toc: yes
@@ -43,7 +43,7 @@ This document contains errata (and non-error important notes) for the textbook _
 |---------------:|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    74      |    E4.7: $y = b_{0} + b_{1} * x + e$    |   The error term is sometimes notated as epsilon ($\epsilon$), but notated as $e$, it shouldn't be confused with the natural logarithm base (also notated $e$), which is discussed in section 5.4.                                                                      |
 |    75      |    Figure 4.6 shows the _SSE_ as a function of different slope values.    |    Should be Figure 4.5b, not Figure 4.6                                                                                                                                                                                     |
-|    77      |    Conversely, 32% of the variation in response durations is due to chance    |    Should be 28% (100%$\minus$74%), not 32%.              |
+|    77      |    Conversely, 32% of the variation in response durations is due to chance    |    Should be 28% (100%$-$74%), not 32%.              |
 |    78      |    `plot(x., y, pch = 19)`                                               |    Extra dot. Should be<br>`plot(x, y, pch = 19)`                                                                                                                                                                 |
 |    81–2    |    `# A tibble: 50 x 2`<br>(...)<br>`# ... with 40 more rows`           |    The preceding code will yield a tibble with 61 rows, not 50. So your output should be<br>`# A tibble: 61 x 2`<br>(...)<br>`# ... with 50 more rows`                                                      |
 |    83      |    (Code output starting with `r.squared`)                                  |    The alignment of this output apparently got messed up in the book publication process, but your output should be nicely lined up between the labels (like `r.squared`) and the quantities (like `0.9283634`)    |

@@ -500,11 +500,12 @@ University of Pittsburgh</div></h4>
 </div>
 <div id="chapter-9-inferential-statistics-1" class="section level1">
 <h1>Chapter 9: Inferential statistics 1</h1>
+<!-- This is a grid table r/t the usual pipe table, since the former supports arbitrary block elements (in this case, a bulleted list): https://pandoc.org/MANUAL.html#extension-grid_tables -->
 <table>
 <colgroup>
-<col width="3%" />
-<col width="35%" />
-<col width="60%" />
+<col width="1%" />
+<col width="12%" />
+<col width="85%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -527,7 +528,28 @@ University of Pittsburgh</div></h4>
 <tr class="odd">
 <td align="right">163</td>
 <td>(Equation E9.4)</td>
-<td>Clarification: this is the <strong>95%</strong> confidence interval; the coefficient 1.96 is greater for higher confidence levels and lesser for lower confidence levels.</td>
+<td>This equation oversimplifies things a little too much. A more general form would be the following: <br> <span class="math inline">\(CI = [estimate-CV*SE, estimate+CV*SE]\)</span>
+<ul>
+<li>
+<span class="math inline">\(estimate\)</span> is some sample estimate—which could be a mean (<span class="math inline">\(\bar{x}\)</span>), a regression coefficient (<span class="math inline">\(b\)</span>), or some other estimate of a population parameter.
+</li>
+<ul>
+<li>
+Equation E9.4 uses the sample mean (<span class="math inline">\(\bar{x}\)</span>) here, but you can use CIs to estimate population parameters other than the population mean.
+</li>
+</ul>
+<li>
+<span class="math inline">\(CV\)</span> is the <em>critical value</em>: the value of the sampling distribution corresponding to the confidence level you specify.
+</li>
+<ul>
+<li>
+Equation E9.4 uses 1.96 here, but this is the critical value <em>specifically</em> for a normally-distributed sampling distribution <em>and</em> a 95% confidence level (because 95% of <em>z</em>-scores fall within 1.96 SDs of the mean)
+</li>
+</ul>
+<li>
+<span class="math inline">\(SE\)</span> is the standard error, or <span class="math inline">\(\frac{sd}{\sqrt{n}}\)</span> (<span class="math inline">\(sd\)</span> being the <em>sample</em> standard deviation)
+</li>
+</ul></td>
 </tr>
 <tr class="even">
 <td align="right">167</td>

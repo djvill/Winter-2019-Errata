@@ -626,9 +626,9 @@ Equation E9.4 uses 1.96 here, but this is the critical value <em>specifically</e
 <h1>Chapter 12: Generalized linear models 1</h1>
 <table>
 <colgroup>
-<col width="4%" />
-<col width="42%" />
-<col width="52%" />
+<col width="3%" />
+<col width="41%" />
+<col width="55%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -641,7 +641,27 @@ Equation E9.4 uses 1.96 here, but this is the critical value <em>specifically</e
 <tr class="odd">
 <td align="right">202</td>
 <td>Even if you supply very extreme values such as 10,000 or –10,000 to <code>plogis()</code>, it will always return a number between 0 and 1.</td>
-<td>In the current version of R (4.0.3), <code>plogis(17)</code> returns <code>1</code>. While <code>1 - plogis(17)</code> is nonzero, <code>1 - plogis(37)</code> returns <code>0</code>, and <code>qlogis(1 - plogis(37))</code> returns <code>-Inf</code>.</td>
+<td><code>plogis()</code> <strong>doesn’t</strong> always return a number between 0 and 1 in the version of R we’re using (4.0.3). <code>plogis(17)</code> returns <code>1</code>, and while <code>1 - plogis(17)</code> is nonzero, <code>1 - plogis(37)</code> returns <code>0</code>, and <code>qlogis(1 - plogis(37))</code> returns <code>-Inf</code>.</td>
+</tr>
+<tr class="even">
+<td align="right">203</td>
+<td>The whole point of talking about log odds is that this puts probabilities onto a continuous scale.</td>
+<td>This is confusing because probabilities are also continuous. Better stated: Log-odds put probabilities onto an <strong>unbounded</strong> scale, which is more amenable to regression.</td>
+</tr>
+<tr class="odd">
+<td align="right">203</td>
+<td>The logistic function is the <em>inverse</em> of the log odd function.</td>
+<td>FYI, in R, the logistic function is <code>plogis()</code>; its inverse, the logit or log-odds function, is <code>qlogis()</code>. So for example, <code>plogis(0)</code> is 0.5, and <code>qlogis(0.5)</code> is 0.</td>
+</tr>
+<tr class="even">
+<td align="right">209</td>
+<td><code>levels(dative$RealizationOfRecipient)</code></td>
+<td><code>levels(df$myCol)</code> will throw an error if <code>myCol</code> is a character vector, which you can resolve by first converting to a factor: <code>levels(factor(df$myCol))</code>. There’s no error with the <code>dative</code> dataframe because it’s stored in the <code>languageR</code> package with factor columns.</td>
+</tr>
+<tr class="odd">
+<td align="right">214</td>
+<td>(Footnote 4)</td>
+<td>This footnote alludes to the distinction between different <a href="https://en.wikipedia.org/wiki/Level_of_measurement">levels of measurement</a>, in particular the difference between <em>ordinal scales</em> and <em>interval/ratio scales</em>.</td>
 </tr>
 </tbody>
 </table>

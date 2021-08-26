@@ -3,9 +3,9 @@ title: "Errata for _Statistics for Linguists: An Introduction Using R_, Bodo Win
 author: "| Dan Villarreal \n| University of Pittsburgh\n"
 date: "Updated 2/25/2021"
 output: 
-  html_document:
+  github_document:
     toc: yes
-    toc_float: yes
+    # toc_float: yes
 ---
 
 

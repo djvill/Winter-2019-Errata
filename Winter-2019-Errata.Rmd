@@ -1,11 +1,13 @@
 ---
 title: "Errata for _Statistics for Linguists: An Introduction Using R_, Bodo Winter, 2019, Routledge"
 author: "| Dan Villarreal \n| University of Pittsburgh\n"
-date: "Updated 2/25/2021"
+date: "Updated 3 February 2022"
 output: 
-  github_document:
+  # github_document:
+  #   toc: yes
+  html_document: 
     toc: yes
-    # toc_float: yes
+    toc_float: yes
 ---
 
 
@@ -67,10 +69,11 @@ theme_minimal()
 
 
 
-# Chapter 5: Linear and nonlinear transformations
+# Chapter 5: Correlation, linear, and nonlinear transformations
 
 |    Page    |    Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |    Comment                                                                         |
 |---------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| 89--90     |    (All of section 5.3)                                                                                                                                                                                                                                                                                                                                                                                                    |    The biggest question I usually get about this chapter is "wait, what's the connection between correlation and transformations?" And honestly...I don't think it makes sense to smush these two concepts into a single chapter, because they don't really make sense together (beyond the fact that they're both statistical concepts). So if it's less confusing to you, treat section 5.3 as a kind of mini-separate-chapter within the larger chapter. |
 |    92      |    The log~10~ of 1000 is 3, which is a difference of 998 [between the logarithm and the raw number].                                                                                                                                                                                                                                                                                                                                                                                                    |    Should be 997, not 998.                                                         |
 |    97      |    (Code output for `tidy(ELP_mdl)`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    Your output will probably have a lot fewer decimal places.                      |
 |    100     |    First, compare `xmdl` to `xmdl_c`. There is no change in the slope, but the intercept is different in the centered model. In both models, the intercept is the prediction for $x$ = 0, but $x$ = 0 corresponds to the average frequency in the centered model. Second, compare `xmdl_c` and `xmdl_z`. The intercepts are the same because, for both models, the predictor has been centered. However, the slope has changed because a change in one unit is now a change in 1 standard deviation.    |    All the instances of `xmdl` should be `ELP_mdl` (including with the `_c` suffix)    |

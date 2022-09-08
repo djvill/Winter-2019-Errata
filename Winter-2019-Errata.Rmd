@@ -1,7 +1,7 @@
 ---
 title: "Errata for _Statistics for Linguists: An Introduction Using R_, Bodo Winter, 2019, Routledge"
 author: "| Dan Villarreal \n| University of Pittsburgh\n"
-date: "Updated 3 February 2022"
+date: "Updated 8 September 2022"
 output: 
   # github_document:
   #   toc: yes
@@ -14,7 +14,7 @@ output:
 
 
 ```{css, include=FALSE}
-##Set widths for 1st & 2nd columns
+/* Set widths for 1st & 2nd columns */
 tbody>tr>:nth-child(1) {
   width: 50px;
 }
@@ -22,13 +22,45 @@ tbody>tr>:nth-child(2) {
   width: 400px;
 }
 
-##More space above headings
+/* More space above headings */
 h1 {
   margin-top: 400px;
 }
 ```
 
 This document contains errata (and non-error important notes) for the textbook _Statistics for Linguists: An Introduction Using R_ (Bodo Winter, 2019, Routledge). Please feel free to suggest other errata by creating a [GitHub issue](https://github.com/djvill/Winter-2019-Errata/issues).
+
+
+# Preface
+
+<!-- This is a grid table r/t the usual pipe table, since the former supports arbitrary block elements (in this case, a bulleted list): https://pandoc.org/MANUAL.html#extension-grid_tables -->
+
++----+--------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|Page|Text                                                                                        |Comment                                                                                                                                                                                                                                                                                                                                                            |
++===:+============================================================================================+===================================================================================================================================================================================================================================================================================================================================================================+
+|xv  |The following R packages need to be installed to be able to execute all code in all chapters|Some packages may be unnecessary depending on what you plan to do:<ul><li>`swirl` is only used for a single exercise in Chapter 1</li><li>`pscl` is only used in Chapter 13</li><li>`lme4` isn't used until Chapter 14</li><li>`afex` and `MuMIn` aren't used until Chapter 15</li><li>`brms` isn't actually used for code, just referenced in Appendix B</li></ul>|
++----+--------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+# Chapter 1: Introduction to R
+
+|Page|Text|Comment|
+|---:|----|-------|
+|14|(Code output for `mydf`)|The alignment of this output apparently got messed up in the book publication process, but your output should be nicely lined up between the column headings (like `participant`) and the values (like `louis`)|
+|15|Notice one curiosity: the `participant` column is indicated to be a factor vector, even though you only supplied a character vector! The `data.frame()` function secretly converted your character vector into factor vector|As of R version 4.0, functions that create dataframes (e.g., `data.frame()`, `read.csv()`) default to leaving character vectors as-is, rather than converting to factor vectors. When you run `str(mydf)`, the second line will instead read ` $ participant: chr  "louis" "paula" "vincenzo"`<br>This change in R's default behavior also affects other outputs in this chapter.|
+|16|`mydf[mydf$participant == 'vincenzo',] $score`|Extra space before `$`. This doesn't actually affect R's output (try it yourself both ways!), but typically we write `$` without a leading space.|
+|17|`nettle <- read.csv('nettle_1999_climate.csv')`|As Winter mentions, this code only works if your working directory is the same as wherever you've downloaded `nettle_1999_climate.csv`. This is not always a trivial or easy thing for students to navigate! Instead, I typically direct students to load datasets directly from the OSF repository, <https://osf.io/34mq9/>. In the files tab on that site (or on https://osf.io/34mq9/files/osfstorage), click _materials_ > _data_, then right-click the dataset you want and copy the URL; then you can run `read.csv()` (or `read_csv()` in Chapter 2) with the URL plus `/download/`, with quotation marks around the full URL. For example, to load the Nettle (1999) dataset, you can run `nettle <- read.csv('https://osf.io/ptq7u/download')`. Of course, this only works if you're connected to the internet!|
+
+
+# Chapter 2: The Tidyverse and Reproducible R Workflows
+
+|Page|Text|Comment|
+|---:|----|-------|
+|28|(Code output for `nettle`, showing `<fct>` under `Country`)|For users of R version 4.0 or later, this will show as `<chr>`, for short for _character vector_. This is because R now defaults to leaving character vectors as-is, rather than converting to factor vectors.|
+|29|But wait, didn’t I just tell you that tibbles default to character vectors? Why is the Country column coded as a factor? The culprit here is the base R function `read.csv()`, which automatically interprets any text column as factor. So, before the data frame was converted into a tibble, the character-to-factor conversion has already happened.|Again, this discussion is moot, since now both `read.csv()` and `read_csv()` interpret text columns as characters, not factors.|
+|29|Output of `nettle <- read_csv('nettle_1999_climate.csv')`|The output looks different if you're using the most recent version of `readr`. The only substantive difference is that `readr` now parses `Langs` as a double, not an integer.|
+|38--39|`geom_histogram(fill = 'peachpuff3')`|The book is in black and white, so the color doesn't show up in the book's version. It should if you run the code yourself.|
+|44--45|In addition, there are code chunks, which always begin with three `'''` (backward ticks, or the grave accent symbol).<br>...<br>`'''{r}`<br>`# R code goes in here`<br>`'''`|The wrong character apparently got substituted in the publishing process. The symbol is ```` ``` ````, which is on the key to the left of `1`. R markdown won't know what to do with `'''`|
 
 
 # Chapter 3: Descriptive statistics

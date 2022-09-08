@@ -1502,7 +1502,7 @@ border-radius: 0px;
 Introduction Using R</em>, Bodo Winter, 2019, Routledge</h1>
 <h4 class="author"><div class="line-block">Dan Villarreal<br />
 University of Pittsburgh</div></h4>
-<h4 class="date">Updated 3 February 2022</h4>
+<h4 class="date">Updated 8 September 2022</h4>
 
 </div>
 
@@ -1512,6 +1512,180 @@ textbook <em>Statistics for Linguists: An Introduction Using R</em>
 (Bodo Winter, 2019, Routledge). Please feel free to suggest other errata
 by creating a <a href="https://github.com/djvill/Winter-2019-Errata/issues">GitHub
 issue</a>.</p>
+<div id="preface" class="section level1">
+<h1>Preface</h1>
+<!-- This is a grid table r/t the usual pipe table, since the former supports arbitrary block elements (in this case, a bulleted list): https://pandoc.org/MANUAL.html#extension-grid_tables -->
+<table style="width:100%;">
+<colgroup>
+<col width="1%" />
+<col width="20%" />
+<col width="78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Page</th>
+<th>Text</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">xv</td>
+<td>The following R packages need to be installed to be able to execute
+all code in all chapters</td>
+<td>Some packages may be unnecessary depending on what you plan to do:
+<ul>
+<li>
+<code>swirl</code> is only used for a single exercise in Chapter 1
+</li>
+<li>
+<code>pscl</code> is only used in Chapter 13
+</li>
+<li>
+<code>lme4</code> isn’t used until Chapter 14
+</li>
+<li>
+<code>afex</code> and <code>MuMIn</code> aren’t used until Chapter 15
+</li>
+<li>
+<code>brms</code> isn’t actually used for code, just referenced in
+Appendix B
+</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="chapter-1-introduction-to-r" class="section level1">
+<h1>Chapter 1: Introduction to R</h1>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="26%" />
+<col width="46%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Page</th>
+<th>Text</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">14</td>
+<td>(Code output for <code>mydf</code>)</td>
+<td>The alignment of this output apparently got messed up in the book
+publication process, but your output should be nicely lined up between
+the column headings (like <code>participant</code>) and the values (like
+<code>louis</code>)</td>
+</tr>
+<tr class="even">
+<td align="right">15</td>
+<td>Notice one curiosity: the <code>participant</code> column is
+indicated to be a factor vector, even though you only supplied a
+character vector! The <code>data.frame()</code> function secretly
+converted your character vector into factor vector</td>
+<td>As of R version 4.0, functions that create dataframes (e.g.,
+<code>data.frame()</code>, <code>read.csv()</code>) default to leaving
+character vectors as-is, rather than converting to factor vectors. When
+you run <code>str(mydf)</code>, the second line will instead read
+<code>$ participant: chr  &quot;louis&quot; &quot;paula&quot; &quot;vincenzo&quot;</code><br>This
+change in R’s default behavior also affects other outputs in this
+chapter.</td>
+</tr>
+<tr class="odd">
+<td align="right">16</td>
+<td><code>mydf[mydf$participant == &#39;vincenzo&#39;,] $score</code></td>
+<td>Extra space before <code>$</code>. This doesn’t actually affect R’s
+output (try it yourself both ways!), but typically we write
+<code>$</code> without a leading space.</td>
+</tr>
+<tr class="even">
+<td align="right">17</td>
+<td><code>nettle &lt;- read.csv(&#39;nettle_1999_climate.csv&#39;)</code></td>
+<td>As Winter mentions, this code only works if your working directory
+is the same as wherever you’ve downloaded
+<code>nettle_1999_climate.csv</code>. This is not always a trivial or
+easy thing for students to navigate! Instead, I typically direct
+students to load datasets directly from the OSF repository, <a href="https://osf.io/34mq9/" class="uri">https://osf.io/34mq9/</a>. In
+the files tab on that site (or on <a href="https://osf.io/34mq9/files/osfstorage" class="uri">https://osf.io/34mq9/files/osfstorage</a>), click
+<em>materials</em> &gt; <em>data</em>, then right-click the dataset you
+want and copy the URL; then you can run <code>read.csv()</code> (or
+<code>read_csv()</code> in Chapter 2) with the URL plus
+<code>/download/</code>, with quotation marks around the full URL. For
+example, to load the Nettle (1999) dataset, you can run
+<code>nettle &lt;- read.csv(&#39;https://osf.io/ptq7u/download&#39;)</code>. Of
+course, this only works if you’re connected to the internet!</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="chapter-2-the-tidyverse-and-reproducible-r-workflows" class="section level1">
+<h1>Chapter 2: The Tidyverse and Reproducible R Workflows</h1>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="26%" />
+<col width="46%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Page</th>
+<th>Text</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">28</td>
+<td>(Code output for <code>nettle</code>, showing
+<code>&lt;fct&gt;</code> under <code>Country</code>)</td>
+<td>For users of R version 4.0 or later, this will show as
+<code>&lt;chr&gt;</code>, for short for <em>character vector</em>. This
+is because R now defaults to leaving character vectors as-is, rather
+than converting to factor vectors.</td>
+</tr>
+<tr class="even">
+<td align="right">29</td>
+<td>But wait, didn’t I just tell you that tibbles default to character
+vectors? Why is the Country column coded as a factor? The culprit here
+is the base R function <code>read.csv()</code>, which automatically
+interprets any text column as factor. So, before the data frame was
+converted into a tibble, the character-to-factor conversion has already
+happened.</td>
+<td>Again, this discussion is moot, since now both
+<code>read.csv()</code> and <code>read_csv()</code> interpret text
+columns as characters, not factors.</td>
+</tr>
+<tr class="odd">
+<td align="right">29</td>
+<td>Output of
+<code>nettle &lt;- read_csv(&#39;nettle_1999_climate.csv&#39;)</code></td>
+<td>The output looks different if you’re using the most recent version
+of <code>readr</code>. The only substantive difference is that
+<code>readr</code> now parses <code>Langs</code> as a double, not an
+integer.</td>
+</tr>
+<tr class="even">
+<td align="right">38–39</td>
+<td><code>geom_histogram(fill = &#39;peachpuff3&#39;)</code></td>
+<td>The book is in black and white, so the color doesn’t show up in the
+book’s version. It should if you run the code yourself.</td>
+</tr>
+<tr class="odd">
+<td align="right">44–45</td>
+<td>In addition, there are code chunks, which always begin with three
+<code>&#39;&#39;&#39;</code> (backward ticks, or the grave accent
+symbol).<br>…<br><code>&#39;&#39;&#39;{r}</code><br><code># R code goes in here</code><br><code>&#39;&#39;&#39;</code></td>
+<td>The wrong character apparently got substituted in the publishing
+process. The symbol is <code>```</code>, which is on the key to the left
+of <code>1</code>. R markdown won’t know what to do with
+<code>&#39;&#39;&#39;</code></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="chapter-3-descriptive-statistics" class="section level1">
 <h1>Chapter 3: Descriptive statistics</h1>
 <table>

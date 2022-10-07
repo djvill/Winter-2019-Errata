@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Dan Villarreal (University of Pittsburgh), with contributions from Laurel MacKenzie (New York University)" />
 
 
 <title>Errata for Statistics for Linguists: An Introduction Using R, Bodo Winter, 2019, Routledge</title>
@@ -1500,9 +1501,9 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">Errata for <em>Statistics for Linguists: An
 Introduction Using R</em>, Bodo Winter, 2019, Routledge</h1>
-<h4 class="author"><div class="line-block">Dan Villarreal<br />
-University of Pittsburgh</div></h4>
-<h4 class="date">Updated 8 September 2022</h4>
+<h4 class="author">Dan Villarreal (University of Pittsburgh), with
+contributions from Laurel MacKenzie (New York University)</h4>
+<h4 class="date">Updated 7 October 2022</h4>
 
 </div>
 
@@ -1766,7 +1767,7 @@ values.</td>
 <td align="right">77</td>
 <td>Conversely, 32% of the variation in response durations is due to
 chance</td>
-<td>Should be 28% (100%$-$74%), not 32%.</td>
+<td>Should be 28% (100%$-$72%), not 32%.</td>
 </tr>
 <tr class="even">
 <td align="right">78</td>
@@ -1879,11 +1880,18 @@ bottom of page), so a more accurate form would be <span class="math inline">\(y 
 e\)</span></td>
 </tr>
 <tr class="even">
+<td align="right">104</td>
+<td>In this model, 900ms is the prediction for a word with 0 log
+frequency and 0 word length.</td>
+<td>The prediction should be 750ms, not 900ms. (900ms was the prediction
+for the model excluding the word length coefficient.)</td>
+</tr>
+<tr class="odd">
 <td align="right">106</td>
 <td>(Code output for <code>tidy(icon_mdl)</code>)</td>
 <td>Your output will probably have a lot fewer decimal places.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="right">106–7</td>
 <td>Footnote 2 discussion of rounding</td>
 <td>Two points of clarification about rounding: (1) Rounding should only
@@ -1893,14 +1901,14 @@ error compounding over the course of many calculations. (2) Rounding
 should only be done when you want to display numbers as numbers, not
 when feeding numbers into a plot.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="right">107</td>
 <td>(Footnote 3) A log frequency of 0 corresponds to a raw word
 frequency of 1, since 100=1</td>
 <td>Missing superscript. Should be<br>A log frequency of 0 corresponds
 to a raw word frequency of 1, since 10<sup>0</sup>=1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="right">111</td>
 <td><code>for (i in 1:9) plot(rnorm(50), rnorm(50))</code></td>
 <td>If your Plots pane in RStudio is too small, running this code will
@@ -1932,6 +1940,15 @@ so, just make Plots pane wider/taller.</td>
 <td>In more recent <code>dplyr</code> versions, we also get a warning
 message:
 <br>`<code>summarise()` ungrouping output (override with `.groups` argument)</code></td>
+</tr>
+<tr class="even">
+<td align="right">127</td>
+<td>(Equation E7.3)</td>
+<td><em>taste valence</em> should be <em>smell valence</em>, and
+<em>smell valence</em> should be <em>taste valence</em>. That is,
+<em>smell valence</em>, as the first ordered factor level, should
+correspond to +1 in the model coefficients, and <em>smell valence</em>
+should correspond to -1.</td>
 </tr>
 </tbody>
 </table>

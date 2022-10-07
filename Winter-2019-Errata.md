@@ -1,36 +1,116 @@
 Errata for *Statistics for Linguists: An Introduction Using R*, Bodo
 Winter, 2019, Routledge
 ================
-Dan Villarreal  
-University of Pittsburgh
+Dan Villarreal (University of Pittsburgh), with contributions from
+Laurel MacKenzie (New York University)
+Updated 7 October 2022
 
-Updated 3 February 2022
-
--   [Chapter 3: Descriptive
-    statistics](#chapter-3-descriptive-statistics)
--   [Chapter 4: Introduction to the linear
-    model](#chapter-4-introduction-to-the-linear-model)
--   [Chapter 5: Correlation, linear, and nonlinear
-    transformations](#chapter-5-correlation-linear-and-nonlinear-transformations)
--   [Chapter 6: Multiple regression](#chapter-6-multiple-regression)
--   [Chapter 7: Categorical
-    predictors](#chapter-7-categorical-predictors)
--   [Chapter 8: Interactions and nonlinear
-    effects](#chapter-8-interactions-and-nonlinear-effects)
--   [Chapter 9: Inferential statistics
-    1](#chapter-9-inferential-statistics-1)
--   [Chapter 10: Inferential statistics
-    2](#chapter-10-inferential-statistics-2)
--   [Chapter 11: Inferential statistics
-    3](#chapter-11-inferential-statistics-3)
--   [Chapter 12: Generalized linear models
-    1](#chapter-12-generalized-linear-models-1)
+- <a href="#preface" id="toc-preface">Preface</a>
+- <a href="#chapter-1-introduction-to-r"
+  id="toc-chapter-1-introduction-to-r">Chapter 1: Introduction to R</a>
+- <a href="#chapter-2-the-tidyverse-and-reproducible-r-workflows"
+  id="toc-chapter-2-the-tidyverse-and-reproducible-r-workflows">Chapter 2:
+  The Tidyverse and Reproducible R Workflows</a>
+- <a href="#chapter-3-descriptive-statistics"
+  id="toc-chapter-3-descriptive-statistics">Chapter 3: Descriptive
+  statistics</a>
+- <a href="#chapter-4-introduction-to-the-linear-model"
+  id="toc-chapter-4-introduction-to-the-linear-model">Chapter 4:
+  Introduction to the linear model</a>
+- <a href="#chapter-5-correlation-linear-and-nonlinear-transformations"
+  id="toc-chapter-5-correlation-linear-and-nonlinear-transformations">Chapter
+  5: Correlation, linear, and nonlinear transformations</a>
+- <a href="#chapter-6-multiple-regression"
+  id="toc-chapter-6-multiple-regression">Chapter 6: Multiple
+  regression</a>
+- <a href="#chapter-7-categorical-predictors"
+  id="toc-chapter-7-categorical-predictors">Chapter 7: Categorical
+  predictors</a>
+- <a href="#chapter-8-interactions-and-nonlinear-effects"
+  id="toc-chapter-8-interactions-and-nonlinear-effects">Chapter 8:
+  Interactions and nonlinear effects</a>
+- <a href="#chapter-9-inferential-statistics-1"
+  id="toc-chapter-9-inferential-statistics-1">Chapter 9: Inferential
+  statistics 1</a>
+- <a href="#chapter-10-inferential-statistics-2"
+  id="toc-chapter-10-inferential-statistics-2">Chapter 10: Inferential
+  statistics 2</a>
+- <a href="#chapter-11-inferential-statistics-3"
+  id="toc-chapter-11-inferential-statistics-3">Chapter 11: Inferential
+  statistics 3</a>
+- <a href="#chapter-12-generalized-linear-models-1"
+  id="toc-chapter-12-generalized-linear-models-1">Chapter 12: Generalized
+  linear models 1</a>
 
 This document contains errata (and non-error important notes) for the
 textbook *Statistics for Linguists: An Introduction Using R* (Bodo
 Winter, 2019, Routledge). Please feel free to suggest other errata by
 creating a [GitHub
 issue](https://github.com/djvill/Winter-2019-Errata/issues).
+
+# Preface
+
+<!-- This is a grid table r/t the usual pipe table, since the former supports arbitrary block elements (in this case, a bulleted list): https://pandoc.org/MANUAL.html#extension-grid_tables -->
+
+<table style="width:100%;">
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 20%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Page</th>
+<th>Text</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">xv</td>
+<td>The following R packages need to be installed to be able to execute
+all code in all chapters</td>
+<td>Some packages may be unnecessary depending on what you plan to do:
+<ul>
+<li>
+<code>swirl</code> is only used for a single exercise in Chapter 1
+</li>
+<li>
+<code>pscl</code> is only used in Chapter 13
+</li>
+<li>
+<code>lme4</code> isn’t used until Chapter 14
+</li>
+<li>
+<code>afex</code> and <code>MuMIn</code> aren’t used until Chapter 15
+</li>
+<li>
+<code>brms</code> isn’t actually used for code, just referenced in
+Appendix B
+</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+# Chapter 1: Introduction to R
+
+| Page | Text                                                                                                                                                                                                                         | Comment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|-----:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   14 | (Code output for `mydf`)                                                                                                                                                                                                     | The alignment of this output apparently got messed up in the book publication process, but your output should be nicely lined up between the column headings (like `participant`) and the values (like `louis`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|   15 | Notice one curiosity: the `participant` column is indicated to be a factor vector, even though you only supplied a character vector! The `data.frame()` function secretly converted your character vector into factor vector | As of R version 4.0, functions that create dataframes (e.g., `data.frame()`, `read.csv()`) default to leaving character vectors as-is, rather than converting to factor vectors. When you run `str(mydf)`, the second line will instead read `$ participant: chr  "louis" "paula" "vincenzo"`<br>This change in R’s default behavior also affects other outputs in this chapter.                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|   16 | `mydf[mydf$participant == 'vincenzo',] $score`                                                                                                                                                                               | Extra space before `$`. This doesn’t actually affect R’s output (try it yourself both ways!), but typically we write `$` without a leading space.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|   17 | `nettle <- read.csv('nettle_1999_climate.csv')`                                                                                                                                                                              | As Winter mentions, this code only works if your working directory is the same as wherever you’ve downloaded `nettle_1999_climate.csv`. This is not always a trivial or easy thing for students to navigate! Instead, I typically direct students to load datasets directly from the OSF repository, <https://osf.io/34mq9/>. In the files tab on that site (or on <https://osf.io/34mq9/files/osfstorage>), click *materials* \> *data*, then right-click the dataset you want and copy the URL; then you can run `read.csv()` (or `read_csv()` in Chapter 2) with the URL plus `/download/`, with quotation marks around the full URL. For example, to load the Nettle (1999) dataset, you can run `nettle <- read.csv('https://osf.io/ptq7u/download')`. Of course, this only works if you’re connected to the internet! |
+
+# Chapter 2: The Tidyverse and Reproducible R Workflows
+
+|  Page | Text                                                                                                                                                                                                                                                                                                                                                     | Comment                                                                                                                                                                                                        |
+|------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    28 | (Code output for `nettle`, showing `<fct>` under `Country`)                                                                                                                                                                                                                                                                                              | For users of R version 4.0 or later, this will show as `<chr>`, for short for *character vector*. This is because R now defaults to leaving character vectors as-is, rather than converting to factor vectors. |
+|    29 | But wait, didn’t I just tell you that tibbles default to character vectors? Why is the Country column coded as a factor? The culprit here is the base R function `read.csv()`, which automatically interprets any text column as factor. So, before the data frame was converted into a tibble, the character-to-factor conversion has already happened. | Again, this discussion is moot, since now both `read.csv()` and `read_csv()` interpret text columns as characters, not factors.                                                                                |
+|    29 | Output of `nettle <- read_csv('nettle_1999_climate.csv')`                                                                                                                                                                                                                                                                                                | The output looks different if you’re using the most recent version of `readr`. The only substantive difference is that `readr` now parses `Langs` as a double, not an integer.                                 |
+| 38–39 | `geom_histogram(fill = 'peachpuff3')`                                                                                                                                                                                                                                                                                                                    | The book is in black and white, so the color doesn’t show up in the book’s version. It should if you run the code yourself.                                                                                    |
+| 44–45 | In addition, there are code chunks, which always begin with three `'''` (backward ticks, or the grave accent symbol).<br>…<br>`'''{r}`<br>`# R code goes in here`<br>`'''`                                                                                                                                                                               | The wrong character apparently got substituted in the publishing process. The symbol is ```` ``` ````, which is on the key to the left of `1`. R markdown won’t know what to do with `'''`                     |
 
 # Chapter 3: Descriptive statistics
 
@@ -45,9 +125,9 @@ issue](https://github.com/djvill/Winter-2019-Errata/issues).
 
 | Page | Text                                                                    | Comment                                                                                                                                                                                                      |
 |-----:|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   74 | E4.7: *y* = *b*<sub>0</sub> + *b*<sub>1</sub> \* *x* + *e*              | The error term is sometimes notated as epsilon (*ϵ*), but notated as *e*, it shouldn’t be confused with the natural logarithm base (also notated *e*), which is discussed in section 5.4.                    |
+|   74 | E4.7: $y = b_{0} + b_{1} * x + e$                                       | The error term is sometimes notated as epsilon ($\epsilon$), but notated as $e$, it shouldn’t be confused with the natural logarithm base (also notated $e$), which is discussed in section 5.4.             |
 |   75 | Figure 4.6 shows the *SSE* as a function of different slope values.     | Should be Figure 4.5b, not Figure 4.6                                                                                                                                                                        |
-|   77 | Conversely, 32% of the variation in response durations is due to chance | Should be 28% (100%$-$74%), not 32%.                                                                                                                                                                         |
+|   77 | Conversely, 32% of the variation in response durations is due to chance | Should be 28% (100%\$-\$72%), not 32%.                                                                                                                                                                       |
 |   78 | `plot(x., y, pch = 19)`                                                 | Extra dot. Should be<br>`plot(x, y, pch = 19)`                                                                                                                                                               |
 | 81–2 | `# A tibble: 50 x 2`<br>(…)<br>`# ... with 40 more rows`                | The preceding code will yield a tibble with 61 rows, not 50. So your output should be<br>`# A tibble: 61 x 2`<br>(…)<br>`# ... with 50 more rows`                                                            |
 |   83 | (Code output starting with `r.squared`)                                 | The alignment of this output apparently got messed up in the book publication process, but your output should be nicely lined up between the labels (like `r.squared`) and the quantities (like `0.9283634`) |
@@ -62,23 +142,25 @@ issue](https://github.com/djvill/Winter-2019-Errata/issues).
 | 89–90 | (All of section 5.3)                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | The biggest question I usually get about this chapter is “wait, what’s the connection between correlation and transformations?” And honestly…I don’t think it makes sense to smush these two concepts into a single chapter, because they don’t really make sense together (beyond the fact that they’re both statistical concepts). So if it’s less confusing to you, treat section 5.3 as a kind of mini-separate-chapter within the larger chapter. |
 |    92 | The log<sub>10</sub> of 1000 is 3, which is a difference of 998 \[between the logarithm and the raw number\].                                                                                                                                                                                                                                                                                                                                                                                     | Should be 997, not 998.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |    97 | (Code output for `tidy(ELP_mdl)`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Your output will probably have a lot fewer decimal places.                                                                                                                                                                                                                                                                                                                                                                                             |
-|   100 | First, compare `xmdl` to `xmdl_c`. There is no change in the slope, but the intercept is different in the centered model. In both models, the intercept is the prediction for *x* = 0, but *x* = 0 corresponds to the average frequency in the centered model. Second, compare `xmdl_c` and `xmdl_z`. The intercepts are the same because, for both models, the predictor has been centered. However, the slope has changed because a change in one unit is now a change in 1 standard deviation. | All the instances of `xmdl` should be `ELP_mdl` (including with the `_c` suffix)                                                                                                                                                                                                                                                                                                                                                                       |
+|   100 | First, compare `xmdl` to `xmdl_c`. There is no change in the slope, but the intercept is different in the centered model. In both models, the intercept is the prediction for $x$ = 0, but $x$ = 0 corresponds to the average frequency in the centered model. Second, compare `xmdl_c` and `xmdl_z`. The intercepts are the same because, for both models, the predictor has been centered. However, the slope has changed because a change in one unit is now a change in 1 standard deviation. | All the instances of `xmdl` should be `ELP_mdl` (including with the `_c` suffix)                                                                                                                                                                                                                                                                                                                                                                       |
 
 # Chapter 6: Multiple regression
 
-|  Page | Text                                                                                    | Comment                                                                                                                                                                                                                                                                                                                                                                             |
-|------:|-----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   103 | E6.1: *y* = *b*<sub>0</sub> + *b*<sub>1</sub> \* *x* + *b*<sub>2</sub> \* *x* + *e*     | This equation suggests that *b*<sub>1</sub> and *b*<sub>2</sub> are multiplied by the same predictor *x*. In the case of multiple regression, each predictor has its own coefficient (as in E6.3, bottom of page), so a more accurate form would be *y* = *b*<sub>0</sub> + *b*<sub>1</sub> \* *x*<sub>1</sub> + *b*<sub>2</sub> \* *x*<sub>2</sub> + *e*                           |
-|   106 | (Code output for `tidy(icon_mdl)`)                                                      | Your output will probably have a lot fewer decimal places.                                                                                                                                                                                                                                                                                                                          |
-| 106–7 | Footnote 2 discussion of rounding                                                       | Two points of clarification about rounding: (1) Rounding should only be done at the *end* of an analysis; any earlier, and you’re losing precision in your calculations, running the risk of a rounding error compounding over the course of many calculations. (2) Rounding should only be done when you want to display numbers as numbers, not when feeding numbers into a plot. |
-|   107 | (Footnote 3) A log frequency of 0 corresponds to a raw word frequency of 1, since 100=1 | Missing superscript. Should be<br>A log frequency of 0 corresponds to a raw word frequency of 1, since 10<sup>0</sup>=1                                                                                                                                                                                                                                                             |
-|   111 | `for (i in 1:9) plot(rnorm(50), rnorm(50))`                                             | If your Plots pane in RStudio is too small, running this code will yield `"Error in plot.new() : figure margins too large".` If so, just make Plots pane wider/taller.                                                                                                                                                                                                              |
+|  Page | Text                                                                                      | Comment                                                                                                                                                                                                                                                                                                                                                                             |
+|------:|-------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   103 | E6.1: $y = b_{0} + b_{1} * x + b_{2} * x + e$                                             | This equation suggests that $b_{1}$ and $b_{2}$ are multiplied by the same predictor $x$. In the case of multiple regression, each predictor has its own coefficient (as in E6.3, bottom of page), so a more accurate form would be $y = b_{0} + b_{1} * x_{1} + b_{2} * x_{2} + e$                                                                                                 |
+|   104 | In this model, 900ms is the prediction for a word with 0 log frequency and 0 word length. | The prediction should be 750ms, not 900ms. (900ms was the prediction for the model excluding the word length coefficient.)                                                                                                                                                                                                                                                          |
+|   106 | (Code output for `tidy(icon_mdl)`)                                                        | Your output will probably have a lot fewer decimal places.                                                                                                                                                                                                                                                                                                                          |
+| 106–7 | Footnote 2 discussion of rounding                                                         | Two points of clarification about rounding: (1) Rounding should only be done at the *end* of an analysis; any earlier, and you’re losing precision in your calculations, running the risk of a rounding error compounding over the course of many calculations. (2) Rounding should only be done when you want to display numbers as numbers, not when feeding numbers into a plot. |
+|   107 | (Footnote 3) A log frequency of 0 corresponds to a raw word frequency of 1, since 100=1   | Missing superscript. Should be<br>A log frequency of 0 corresponds to a raw word frequency of 1, since 10<sup>0</sup>=1                                                                                                                                                                                                                                                             |
+|   111 | `for (i in 1:9) plot(rnorm(50), rnorm(50))`                                               | If your Plots pane in RStudio is too small, running this code will yield `"Error in plot.new() : figure margins too large".` If so, just make Plots pane wider/taller.                                                                                                                                                                                                              |
 
 # Chapter 7: Categorical predictors
 
-| Page | Text                                    | Comment                                                                                                                                       |
-|-----:|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-|  120 | (Code output at the bottom of the page) | In more recent `dplyr` versions, we also get a warning message: <br>\``` summarise()` ungrouping output (override with `.groups` argument) `` |
+| Page | Text                                    | Comment                                                                                                                                                                                                                                                |
+|-----:|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|  120 | (Code output at the bottom of the page) | In more recent `dplyr` versions, we also get a warning message: <br>\``` summarise()` ungrouping output (override with `.groups` argument) ``                                                                                                          |
+|  127 | (Equation E7.3)                         | *taste valence* should be *smell valence*, and *smell valence* should be *taste valence*. That is, *smell valence*, as the first ordered factor level, should correspond to +1 in the model coefficients, and *smell valence* should correspond to -1. |
 
 # Chapter 8: Interactions and nonlinear effects
 
@@ -91,7 +173,7 @@ issue](https://github.com/djvill/Winter-2019-Errata/issues).
 
 <!-- This is a grid table r/t the usual pipe table, since the former supports arbitrary block elements (in this case, a bulleted list): https://pandoc.org/MANUAL.html#extension-grid_tables -->
 
-<table>
+<table style="width:100%;">
 <colgroup>
 <col style="width: 1%" />
 <col style="width: 12%" />
@@ -108,48 +190,84 @@ issue](https://github.com/djvill/Winter-2019-Errata/issues).
 <tr class="odd">
 <td style="text-align: right;">161</td>
 <td>(Figure 9.2)</td>
-<td>According to the equation for Cohen’s <em>d</em> (E9.1), the <em>d</em> values in this figure should be 1, 2, and 6 (there’s probably some rounding in the <em>M</em> values that we’re not shown)</td>
+<td>According to the equation for Cohen’s <em>d</em> (E9.1), the
+<em>d</em> values in this figure should be 1, 2, and 6 (there’s probably
+some rounding in the <em>M</em> values that we’re not shown)</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">162</td>
 <td><code>Cohen's d</code><br><code>d estimate: 1.037202 (large)</code><br><code>95 percent confidence interval:</code><br><code>inf       sup</code><br><code>0.5142663 1.5601377</code></td>
-<td>Using the latest version of the <code>effsize</code> package (0.8.1), I get the following instead:<br> <code>Cohen's d</code><br><code>d estimate: -1.070784 (large)</code><br><code>95 percent confidence interval:</code><br><code>lower      upper</code><br><code>-1.5955866 -0.5459824</code></td>
+<td>Using the latest version of the <code>effsize</code> package
+(0.8.1), I get the following instead:<br>
+<code>Cohen's d</code><br><code>d estimate: -1.070784 (large)</code><br><code>95 percent confidence interval:</code><br><code>lower      upper</code><br><code>-1.5955866 -0.5459824</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">163</td>
 <td>(Equation E9.4)</td>
-<td>This equation oversimplifies things a little too much. A more general form would be the following: <br> <span class="math inline"><em>C</em><em>I</em> = [<em>e</em><em>s</em><em>t</em><em>i</em><em>m</em><em>a</em><em>t</em><em>e</em>−<em>C</em><em>V</em>*<em>S</em><em>E</em>,<em>e</em><em>s</em><em>t</em><em>i</em><em>m</em><em>a</em><em>t</em><em>e</em>+<em>C</em><em>V</em>*<em>S</em><em>E</em>]</span>
+<td>This equation oversimplifies things a little too much. A more
+general form would be the following: <br> <span
+class="math inline"><em>C</em><em>I</em> = [<em>e</em><em>s</em><em>t</em><em>i</em><em>m</em><em>a</em><em>t</em><em>e</em>−<em>C</em><em>V</em>*<em>S</em><em>E</em>,<em>e</em><em>s</em><em>t</em><em>i</em><em>m</em><em>a</em><em>t</em><em>e</em>+<em>C</em><em>V</em>*<em>S</em><em>E</em>]</span>
 <ul>
 <li>
-<span class="math inline"><em>e</em><em>s</em><em>t</em><em>i</em><em>m</em><em>a</em><em>t</em><em>e</em></span> is some sample estimate—which could be a mean (<span class="math inline"><em>x̄</em></span>), a regression coefficient (<span class="math inline"><em>b</em></span>), or some other estimate of a population parameter.
+<span
+class="math inline"><em>e</em><em>s</em><em>t</em><em>i</em><em>m</em><em>a</em><em>t</em><em>e</em></span>
+is some sample estimate—which could be a mean (<span
+class="math inline"><em>x̄</em></span>), a regression coefficient (<span
+class="math inline"><em>b</em></span>), or some other estimate of a
+population parameter.
 </li>
 <ul>
 <li>
-Equation E9.4 uses the sample mean (<span class="math inline"><em>x̄</em></span>) here, but you can use CIs to estimate population parameters other than the population mean.
+Equation E9.4 uses the sample mean (<span
+class="math inline"><em>x̄</em></span>) here, but you can use CIs to
+estimate population parameters other than the population mean.
 </li>
 </ul>
 <li>
-<span class="math inline"><em>C</em><em>V</em></span> is the <em>critical value</em>: the value of the sampling distribution corresponding to the confidence level you specify.
+<span class="math inline"><em>C</em><em>V</em></span> is the
+<em>critical value</em>: the value of the sampling distribution
+corresponding to the confidence level you specify.
 </li>
 <ul>
 <li>
-Equation E9.4 uses 1.96 here, but this is the critical value <em>specifically</em> for a normally-distributed sampling distribution <em>and</em> a 95% confidence level (because 95% of <em>z</em>-scores fall within 1.96 SDs of the mean)
+Equation E9.4 uses 1.96 here, but this is the critical value
+<em>specifically</em> for a normally-distributed sampling distribution
+<em>and</em> a 95% confidence level (because 95% of <em>z</em>-scores
+fall within 1.96 SDs of the mean)
 </li>
 </ul>
 <li>
-<span class="math inline"><em>S</em><em>E</em></span> is the standard error, or <span class="math inline">$\frac{sd}{\sqrt{n}}$</span> (<span class="math inline"><em>s</em><em>d</em></span> being the <em>sample</em> standard deviation)
+<span class="math inline"><em>S</em><em>E</em></span> is the standard
+error, or <span class="math inline">$\frac{sd}{\sqrt{n}}$</span> (<span
+class="math inline"><em>s</em><em>d</em></span> being the
+<em>sample</em> standard deviation)
 </li>
 </ul></td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">167</td>
 <td>For <em>t</em> = 1.5, the <em>p</em>-value is <em>p</em> = 0.14</td>
-<td>This is true with a sample size of 100. The <em>t</em>-distribution changes shape with different sample sizes (technically, with different “degrees of freedom”, which are closely related to sample size). Smaller samples mean the <em>t</em>-distribution has ‘heavier tails’, which translates to greater <em>p</em>-values for smaller sample sizes (holding <em>t</em> constant). As sample sizes approach infinity, the <em>t</em>-distribution approaches the shape of the normal distribution.</td>
+<td>This is true with a sample size of 100. The <em>t</em>-distribution
+changes shape with different sample sizes (technically, with different
+“degrees of freedom”, which are closely related to sample size). Smaller
+samples mean the <em>t</em>-distribution has ‘heavier tails’, which
+translates to greater <em>p</em>-values for smaller sample sizes
+(holding <em>t</em> constant). As sample sizes approach infinity, the
+<em>t</em>-distribution approaches the shape of the normal
+distribution.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">168</td>
-<td>The critical value turns out to be <em>t</em> = 1.98 in this case.</td>
-<td>Again, “this case” refers to a sample size of 100 (see above comment). For sample sizes of 10, 30, 100, 300, and 1000, the critical values for an <span class="math inline"><em>α</em></span> level of 0.05 are roughly 2.26, 2.05, 1.98, 1.97, and 1.96 (respectively). Note that the corresponding <span class="math inline"><em>α</em></span> critical value for a normal distribution is 1.96, underscoring the point that larger sample sizes make the <em>t</em>-distribution more like the normal distribution.</td>
+<td>The critical value turns out to be <em>t</em> = 1.98 in this
+case.</td>
+<td>Again, “this case” refers to a sample size of 100 (see above
+comment). For sample sizes of 10, 30, 100, 300, and 1000, the critical
+values for an <span class="math inline"><em>α</em></span> level of 0.05
+are roughly 2.26, 2.05, 1.98, 1.97, and 1.96 (respectively). Note that
+the corresponding <span class="math inline"><em>α</em></span> critical
+value for a normal distribution is 1.96, underscoring the point that
+larger sample sizes make the <em>t</em>-distribution more like the
+normal distribution.</td>
 </tr>
 </tbody>
 </table>

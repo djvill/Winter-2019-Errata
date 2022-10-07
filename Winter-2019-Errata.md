@@ -160,7 +160,7 @@ Appendix B
 | Page | Text                                    | Comment                                                                                                                                                                                                                                                |
 |-----:|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  120 | (Code output at the bottom of the page) | In more recent `dplyr` versions, we also get a warning message: <br>\``` summarise()` ungrouping output (override with `.groups` argument) ``                                                                                                          |
-|  127 | (Equation E7.3)                         | *taste valence* should be *smell valence*, and *smell valence* should be *taste valence*. That is, *smell valence*, as the first ordered factor level, should correspond to +1 in the model coefficients, and *smell valence* should correspond to -1. |
+|  127 | (Equation E7.3)                         | *taste valence* should be *smell valence*, and *smell valence* should be *taste valence*. That is, *smell valence*, as the first ordered factor level, should correspond to +1 in the model coefficients, and *taste valence* should correspond to -1. |
 
 # Chapter 8: Interactions and nonlinear effects
 

@@ -1,7 +1,7 @@
 ---
 title: "Errata for _Statistics for Linguists: An Introduction Using R_, Bodo Winter, 2019, Routledge"
 author: "| Dan Villarreal \n| University of Pittsburgh\n"
-date: "Updated 8 September 2022"
+date: "Updated 7 October 2022"
 output: 
   # github_document:
   #   toc: yes
@@ -79,7 +79,7 @@ This document contains errata (and non-error important notes) for the textbook _
 |---------------:|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    74      |    E4.7: $y = b_{0} + b_{1} * x + e$    |   The error term is sometimes notated as epsilon ($\epsilon$), but notated as $e$, it shouldn't be confused with the natural logarithm base (also notated $e$), which is discussed in section 5.4.                                                                      |
 |    75      |    Figure 4.6 shows the _SSE_ as a function of different slope values.    |    Should be Figure 4.5b, not Figure 4.6                                                                                                                                                                                     |
-|    77      |    Conversely, 32% of the variation in response durations is due to chance    |    Should be 28% (100%$-$74%), not 32%.              |
+|    77      |    Conversely, 32% of the variation in response durations is due to chance    |    Should be 28% (100%$-$72%), not 32%.              |
 |    78      |    `plot(x., y, pch = 19)`                                               |    Extra dot. Should be<br>`plot(x, y, pch = 19)`                                                                                                                                                                 |
 |    81–2    |    `# A tibble: 50 x 2`<br>(...)<br>`# ... with 40 more rows`           |    The preceding code will yield a tibble with 61 rows, not 50. So your output should be<br>`# A tibble: 61 x 2`<br>(...)<br>`# ... with 50 more rows`                                                      |
 |    83      |    (Code output starting with `r.squared`)                                  |    The alignment of this output apparently got messed up in the book publication process, but your output should be nicely lined up between the labels (like `r.squared`) and the quantities (like `0.9283634`)    |
@@ -120,6 +120,7 @@ theme_minimal()
 |    Page    |    Text                                                                                         |    Comment                                                                                                                  |
 |---------------:|-----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 |    103     |    E6.1: $y = b_{0} + b_{1} * x + b_{2} * x + e$                                                           |    This equation suggests that $b_{1}$ and $b_{2}$ are multiplied by the same predictor $x$. In the case of multiple regression, each predictor has its own coefficient (as in E6.3, bottom of page), so a more accurate form would be $y = b_{0} + b_{1} * x_{1} + b_{2} * x_{2} + e$   |
+|    104     |    In this model, 900ms is the prediction for a word with 0 log frequency and 0 word length.                                                           |    The prediction should be 750ms, not 900ms. (900ms was the prediction for the model excluding the word length coefficient.)                  
 |    106     |    (Code output for `tidy(icon_mdl)`)                                                           |    Your output will probably have a lot fewer decimal places.                                                               |
 |    106--7  |    Footnote 2 discussion of rounding                                                                                 |    Two points of clarification about rounding: (1) Rounding should only be done at the _end_ of an analysis; any earlier, and you're losing precision in your calculations, running the risk of a rounding error compounding over the course of many calculations. (2) Rounding should only be done when you want to display numbers as numbers, not when feeding numbers into a plot.                                                               |
 |    107     |    (Footnote 3) A log frequency of 0 corresponds to a raw word frequency of 1, since 100=1    |    Missing superscript. Should be<br>A log frequency of 0 corresponds to a raw word frequency of 1, since 10^0^=1    |
@@ -135,6 +136,7 @@ theme_minimal()
 |    Page    |    Text                                         |    Comment                                                                                                                                            |
 |---------------:|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    120     |    (Code output at the bottom of the page)    |    In more recent `dplyr` versions, we also get a warning message: <br>```summarise()` ungrouping output (override with `.groups` argument)``    |
+|    127     |    (Equation E7.3)    |    *taste valence* should be *smell valence*, and *smell valence* should be *taste valence*. That is, *smell valence*, as the first ordered factor level, should correspond to +1 in the model coefficients, and *smell valence* should correspond to -1.   |
 
 
 

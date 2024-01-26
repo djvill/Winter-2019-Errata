@@ -212,3 +212,10 @@ No errata found.
 |    203     |    The logistic function is the _inverse_ of the log odd function.									                                 |    FYI, in R, the logistic function is `plogis()`; its inverse, the logit or log-odds function, is `qlogis()`. So for example, `plogis(0)` is 0.5, and `qlogis(0.5)` is 0.      |
 |    209     |    `levels(dative$RealizationOfRecipient)`									                                					 	 |    `levels(df$myCol)` will throw an error if `myCol` is a character vector, which you can resolve by first converting to a factor: `levels(factor(df$myCol))`. There's no error with the `dative` dataframe because it's stored in the `languageR` package with factor columns.      |
 |    214     |    (Footnote 4)									                                					 	 							 |    This footnote alludes to the distinction between different [levels of measurement](https://en.wikipedia.org/wiki/Level_of_measurement), in particular the difference between _ordinal scales_ and _interval/ratio scales_.  |
+
+
+# Chapter 15: Mixed models 2
+
+|    Page    |    Text                                                                                                                               |    Comment                                                                                                                                                                         |
+|-----------:|---------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    259     |    If this were true, this would mean that higher intercepts always (deterministically) go together with higher frequency slopes (the correlation is indicated to be negative).    |    _Negative_ should be _positive_.    |
